@@ -1,0 +1,3 @@
+"""
+Store app tests package.
+"""

@@ -1,0 +1,266 @@
+{
+	"info": {
+		"_postman_id": "a1b2c3d4-e5f6-7890-abcd-1234567890ab",
+		"name": "Mini E-commerce REST API",
+		"description": "Postman Collection for Mini E-commerce REST API built with Django REST Framework.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{"key": "Content-Type", "value": "application/json"}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"johndoe\",\n  \"email\": \"john@example.com\",\n  \"password\": \"securepass123\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/register/",
+							"host": ["{{base_url}}"],
+							"path": ["api", "auth", "register", ""]
+						}
+					}
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{"key": "Content-Type", "value": "application/json"}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"johndoe\",\n  \"password\": \"securepass123\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/login/",
+							"host": ["{{base_url}}"],
+							"path": ["api", "auth", "login", ""]
+						}
+					}
+				},
+				{
+					"name": "Get Current User Profile",
+					"request": {
+						"method": "GET",
+						"header": [
+							{"key": "Authorization", "value": "Token {{token}}"}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/auth/user/",
+							"host": ["{{base_url}}"],
+							"path": ["api", "auth", "user", ""]
+						}
+					}
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "POST",
+						"header": [
+							{"key": "Authorization", "value": "Token {{token}}"}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/auth/logout/",
+							"host": ["{{base_url}}"],
+							"path": ["api", "auth", "logout", ""]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Categories",
+			"item": [
+				{
+					"name": "List Categories",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/categories/",
+							"host": ["{{base_url}}"],
+							"path": ["api", "categories", ""]
+						}
+					}
+				},
+				{
+					"name": "Create Category (Admin)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{"key": "Content-Type", "value": "application/json"},
+							{"key": "Authorization", "value": "Token {{admin_token}}"}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Electronics\",\n  \"description\": \"Gadgets and consumer electronics\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/categories/",
+							"host": ["{{base_url}}"],
+							"path": ["api", "categories", ""]
+						}
+					}
+				},
+				{
+					"name": "Category Details",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/categories/1/",
+							"host": ["{{base_url}}"],
+							"path": ["api", "categories", "1", ""]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "List Products",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/products/",
+							"host": ["{{base_url}}"],
+							"path": ["api", "products", ""]
+						}
+					}
+				},
+				{
+					"name": "Search Products by Keyword",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/products/?search=phone",
+							"host": ["{{base_url}}"],
+							"path": ["api", "products", ""],
+							"query": [{"key": "search", "value": "phone"}]
+						}
+					}
+				},
+				{
+					"name": "Filter Products by Category",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/products/?category=1",
+							"host": ["{{base_url}}"],
+							"path": ["api", "products", ""],
+							"query": [{"key": "category", "value": "1"}]
+						}
+					}
+				},
+				{
+					"name": "Filter Products by Price Range",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/products/?min_price=100&max_price=500",
+							"host": ["{{base_url}}"],
+							"path": ["api", "products", ""],
+							"query": [
+								{"key": "min_price", "value": "100"},
+								{"key": "max_price", "value": "500"}
+							]
+						}
+					}
+				},
+				{
+					"name": "Order Products by Price",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/products/?ordering=price",
+							"host": ["{{base_url}}"],
+							"path": ["api", "products", ""],
+							"query": [{"key": "ordering", "value": "price"}]
+						}
+					}
+				},
+				{
+					"name": "Create Product (Admin)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{"key": "Content-Type", "value": "application/json"},
+							{"key": "Authorization", "value": "Token {{admin_token}}"}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"iPhone 15 Pro\",\n  \"description\": \"Flagship smartphone with A17 Pro chip\",\n  \"price\": 999.99,\n  \"stock\": 25,\n  \"category\": 1\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/products/",
+							"host": ["{{base_url}}"],
+							"path": ["api", "products", ""]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Orders",
+			"item": [
+				{
+					"name": "Create Order",
+					"request": {
+						"method": "POST",
+						"header": [
+							{"key": "Content-Type", "value": "application/json"},
+							{"key": "Authorization", "value": "Token {{token}}"}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"product\": 1,\n  \"quantity\": 2\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/orders/",
+							"host": ["{{base_url}}"],
+							"path": ["api", "orders", ""]
+						}
+					}
+				},
+				{
+					"name": "List User Orders",
+					"request": {
+						"method": "GET",
+						"header": [
+							{"key": "Authorization", "value": "Token {{token}}"}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/orders/",
+							"host": ["{{base_url}}"],
+							"path": ["api", "orders", ""]
+						}
+					}
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://127.0.0.1:8000",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "admin_token",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
