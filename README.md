@@ -25,7 +25,7 @@ A production-ready RESTful API for an E-commerce platform built using **Django**
 
 ---
 
-##  Project Structure
+## Project Structure
 
 ```
 mini_ecommerce_api/
@@ -55,7 +55,6 @@ mini_ecommerce_api/
 
 ---
 
-
 The server will start at `http://127.0.0.1:8000/`.
 
 ---
@@ -66,18 +65,18 @@ The server will start at `http://127.0.0.1:8000/`.
 
 | Method | Endpoint | Description | Auth Required |
 | :--- | :--- | :--- | :--- |
-| `POST` | `/api/auth/register/` | Register new user & receive token | ❌ No |
-| `POST` | `/api/auth/login/` | Obtain token using username & password | ❌ No |
+| `POST` | `/api/auth/register/` | Register new user & receive token | No |
+| `POST` | `/api/auth/login/` | Obtain token using username & password | No |
 | `POST` | `/api/auth/logout/` | Revoke current user auth token | YES (Token) |
 | `GET` | `/api/auth/user/` | Get current authenticated user info | YES (Token) |
-| `GET` | `/api/categories/` | List all categories | ❌ No |
+| `GET` | `/api/categories/` | List all categories |  No |
 | `POST` | `/api/categories/` | Create a category | Admin Only |
-| `GET` | `/api/categories/<id>/` | View category details | ❌ No |
+| `GET` | `/api/categories/<id>/` | View category details |  No |
 | `PUT/PATCH` | `/api/categories/<id>/` | Update a category | Admin Only |
 | `DELETE` | `/api/categories/<id>/` | Delete a category | Admin Only |
-| `GET` | `/api/products/` | List & filter products | ❌ No |
+| `GET` | `/api/products/` | List & filter products |  No |
 | `POST` | `/api/products/` | Add a product | Admin Only |
-| `GET` | `/api/products/<id>/` | View product details | ❌ No |
+| `GET` | `/api/products/<id>/` | View product details |  No |
 | `PUT/PATCH` | `/api/products/<id>/` | Update a product | Admin Only |
 | `DELETE` | `/api/products/<id>/` | Delete a product | Admin Only |
 | `POST` | `/api/orders/` | Place a new order | YES (Token) |
@@ -86,7 +85,7 @@ The server will start at `http://127.0.0.1:8000/`.
 
 ---
 
-## 💡 Example Queries
+## Example Queries
 
 ### Filtering & Searching Products
 - **Search by keyword**: `GET /api/products/?search=phone`
@@ -95,7 +94,4 @@ The server will start at `http://127.0.0.1:8000/`.
 - **Order by price (ascending)**: `GET /api/products/?ordering=price`
 - **Order by price (descending)**: `GET /api/products/?ordering=-price`
 
-### Header format for Authenticated Requests
-```http
-Authorization: Token 9944b09199c62bcf9418ad846d3e4007654f3794
-```
+
